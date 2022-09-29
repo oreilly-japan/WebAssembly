@@ -2,7 +2,7 @@
 
 ---
 
-<img src="cover.jpg" width="50%">
+<img src="webassembly_cvr.jpg" width="50%">
 
 ---
 
