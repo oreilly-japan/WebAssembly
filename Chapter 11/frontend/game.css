@@ -1,0 +1,63 @@
+.root-container{ position:relative; }
+.container-fluid { text-align:center; }
+
+/* カードの本体 */
+.CardBack,.CardFace {
+  display:inline-block;
+  width:150px;
+  height:200px;
+  margin:6px;
+  border:1px solid black;
+  border-radius:5px;
+  box-shadow: 5px 5px 5px grey;
+  position:relative; /* spanの絶対位置はdivに対して相対的 */
+}
+
+/* カード内のspanでカードの画像を保持 */
+.CardBack > span,.CardFace > span{
+  display:inline-block;
+
+  /* カードの画像にspriteを使用 */
+  width:95px;
+  height:95px;
+  background-image:url('logos.png');
+  background-repeat:no-repeat;
+
+  /* カードの画像を中央に配置 */
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+
+.CardBack { 
+  background-color:#263F7C; 
+  background-position:0 center;
+}
+
+/* レベル1 (2 x 2) */
+.Type0 > span { background-position:-95px center; }
+.Type1 > span { background-position:-190px center; }
+
+/* レベル2 (2 x 3...+2枚) */
+.Type2 > span { background-position:-285px center; }
+
+/* レベル3 (2 x 4...+2枚) */
+.Type3 > span { background-position:-380px center; }
+
+/* レベル4 (3 x 4...+4枚) */
+.Type4 > span { background-position:-475px center; }
+.Type5 > span { background-position:-570px center; }
+
+/* レベル5 (4 x 4...+4枚) */
+.Type6 > span { background-position:-665px center; }
+.Type7 > span { background-position:-760px center; }
+
+/* レベル6 (4 x 5...+4枚) */
+.Type8 > span { background-position:-855px center; }
+.Type9 > span { background-position:-950px center; }
+
+.summary {
+  position:absolute;
+  top:50%;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    View the browser's developer console (F12) to see if WebAssembly is supported.
+
+    <script>
+      // WebAssemblyをサポートしているかを判定する関数
+      function isWebAssemblySupported() {
+        // CompileErrorまたはLinkErrorが発生する場合があるので例外処理をする
+        try {
+          // WebAssemblyという名前のオブジェクトが存在するかを確認する
+          if (typeof WebAssembly === "object") {
+            // マジック（0x00 0x61 0x73 0x6Dは'\0asm'）とバージョン情報（0x01 0x00 0x00 0x00は1）
+            // のみで構成された最小のWebAssemblyモジュール
+            // WebAssembly.Moduleオブジェクトが返された場合は追加の検証をする
+            const module = new WebAssembly.Module(new Uint8Array([0x00, 0x61, 0x73, 0x6D, 0x01, 0x00, 0x00, 0x00]));
+            if (module instanceof WebAssembly.Module) {
+              // moduleがインスタンス化できるかを確認する
+              // インスタンス化に成功した場合はWebAssemblyをサポートしていると判定する
+              const moduleInstance = new WebAssembly.Instance(module);
+              return (moduleInstance instanceof WebAssembly.Instance);
+            }
+          }
+        } catch(error) {}
+
+        // WebAssemblyがサポートされているのであればここに到達するまでにtrueを返しているはずである
+        return false;
+      }
+
+      console.log((isWebAssemblySupported() ? "WebAssembly is supported": "WebAssembly is not supported"));
+    </script>
+  </body>
+</html>
