@@ -1,0 +1,4 @@
+// 0を渡すと5が返ってくる
+// 0ではない値を渡すと10が返ってくる
+const wasmInstance = new WebAssembly.Instance(wasmModule, {});
+console.log(wasmInstance.exports.Test(4));
